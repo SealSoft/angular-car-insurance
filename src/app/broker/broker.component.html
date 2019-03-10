@@ -1,0 +1,32 @@
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+    <h5 class="mb-0">Upload insurance offer</h5>
+
+  </div>
+  <div class="card-body widget-body">
+
+    <form #broker="ngForm" (ngSubmit)=" broker.form.valid && brokerSubmit(broker)" name="addressForm" id="addressForm">
+      <div class="form-group">
+        <label for="name">Broker name</label>
+        <input id="name" class="form-control" name="name" type="text" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="amount">Ether cost</label>
+        <input id="amount" class="form-control" name="amount" type="number" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="duration">Offer duration</label>
+        <input id="duration" class="form-control" name="duration" type="number" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="description">Short description</label>
+        <input id="description" class="form-control" name="description" type="text" required ngModel>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-rounded" [disabled]="!broker.valid" type="submit">Upload offer</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+<hr>

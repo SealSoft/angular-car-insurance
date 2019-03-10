@@ -1,0 +1,36 @@
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+    <h5 class="mb-0">Validate insurance by wallet address</h5>
+
+  </div>
+<div class="card-body widget-body">
+
+  <form #addressForm="ngForm" (ngSubmit)="addressValidate(addressForm)" name="addressForm" id="addressForm">
+    <div class="form-group">
+      <label for="email-b-f">Account address</label>
+      <input id="email-b-f" class="form-control" name="address" type="text" ngModel>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success btn-rounded" type="submit">Validate</button>
+    </div>
+  </form>
+
+</div>
+</div>
+<hr />
+
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+    <h5 class="mb-0">Validate insurance with provided address</h5>
+
+  </div>
+  <div class="card-body widget-body">
+
+    <form #selfForm='ngForm' (ngSubmit)="selfValidate()" class="form">
+      <div class="form-group">
+        <button class="btn btn-success btn-rounded" type="submit">Validate</button>
+      </div>
+    </form>
+
+  </div>
+</div>
