@@ -83,11 +83,13 @@ export class ClaimComponent implements OnInit {
   }
 
   async purchaseInsurance(name: string, plate: string) {
+    this.spinner.show();
     const insuredPerson = await this.tokenService._tokenContract.methods.requestInsurance(name, plate, this.indexSelected).send({
       from: this.tokenService.accounts[0],
       value: this.tokenService.web3Injector.utils.toWei(this.premiums[this.indexSelected].amount, 'ether'),
       gas: 1000000
     });
+    this.spinner.hide();
     console.log(insuredPerson);
     this.toastrService.success('Your insurance program purchased successfully!!', 'Success');
     this.modalRef.close();

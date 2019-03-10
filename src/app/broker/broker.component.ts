@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {TokenService} from '../services/token.service';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-broker',
@@ -9,12 +11,15 @@ import {TokenService} from '../services/token.service';
 })
 export class BrokerComponent implements OnInit {
 
-  constructor(public tokenService: TokenService) { }
+  constructor(public tokenService: TokenService,
+              private spinner: NgxSpinnerService,
+              public toastrService: ToastrService) { }
 
   ngOnInit() {
   }
 
   brokerSubmit(brokerInfo: NgForm) {
+    this.spinner.show();
 
     const promise = this.addPolicyHolder(
       brokerInfo.form.controls.name.value,
@@ -29,6 +34,8 @@ export class BrokerComponent implements OnInit {
       value: this.tokenService.web3Injector.utils.toWei('0.1', 'ether'),
       gas: 1000000
     });
+    this.spinner.hide();
+    this.toastrService.success('Your offer submitted successfully on Rinky network', 'Success offer');
     console.log(policyNumber);
   }
 
